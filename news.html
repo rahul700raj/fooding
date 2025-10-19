@@ -1,0 +1,268 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Pulse — Modern News</title>
+  <meta name="description" content="Pulse — modern, responsive news site template (single-file). Clean layout, accessible markup, dark mode, and minimal JS." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0f1724; /* background for dark theme */
+      --card:#0b1220;
+      --muted:rgba(255,255,255,0.72);
+      --accent:#ff6b6b;
+      --glass: rgba(255,255,255,0.03);
+      --radius:14px;
+      color-scheme: dark;
+      --max-width:1200px;
+    }
+
+    /* Light theme variables (applies when .light on <html>) */
+    html.light{ --bg:#f6f7fb; --card:#ffffff; --muted:#334155; --accent:#ff3b30; --glass: rgba(2,6,23,0.03); color-scheme: light; }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:Inter,system-ui,Segoe UI,Roboto,"Helvetica Neue",Arial;
+      background:linear-gradient(180deg,var(--bg), #081024 120%);
+      color: #e6eef8;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      display:flex;justify-content:center;padding:32px;
+    }
+
+    .container{width:100%;max-width:var(--max-width)}
+
+    header{
+      display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:22px
+    }
+
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{width:48px;height:48px;background:linear-gradient(135deg,var(--accent),#ffb86b);border-radius:10px;display:grid;place-items:center;font-weight:700}
+    .brand h1{margin:0;font-size:18px;letter-spacing:0.4px}
+    .brand p{margin:0;font-size:12px;color:var(--muted)}
+
+    nav{display:flex;gap:8px;align-items:center}
+    .nav-btn{background:transparent;border:0;padding:8px 12px;border-radius:8px;color:var(--muted);cursor:pointer}
+    .nav-btn:hover{background:var(--glass)}
+
+    .top-controls{display:flex;gap:10px;align-items:center}
+    .search{display:flex;align-items:center;background:var(--card);padding:8px 12px;border-radius:12px;gap:8px}
+    .search input{border:0;background:transparent;outline:none;color:inherit;width:220px}
+    .icon{width:18px;height:18px;opacity:0.9}
+
+    main{display:grid;grid-template-columns:1fr 320px;gap:22px}
+
+    /* HERO */
+    .hero{display:grid;grid-template-columns:1fr;gap:14px;padding:20px;border-radius:var(--radius);background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);box-shadow:0 6px 18px rgba(0,0,0,0.4)}
+    .hero .eyebrow{font-size:12px;color:var(--accent);font-weight:600}
+    .hero h2{margin:0;font-family:Merriweather, serif;font-size:28px}
+    .hero p{margin:0;color:var(--muted)}
+    .hero-meta{display:flex;gap:10px;align-items:center;margin-top:8px}
+
+    .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:14px}
+    .card{background:var(--card);border-radius:12px;padding:10px;display:flex;gap:12px;align-items:flex-start}
+    .thumb{width:140px;height:90px;border-radius:10px;background:#12202e;flex-shrink:0;overflow:hidden}
+    .thumb img{width:100%;height:100%;object-fit:cover;display:block}
+    .card h3{margin:0;font-size:16px}
+    .card p{margin:6px 0 0 0;color:var(--muted);font-size:13px}
+
+    /* SIDEBAR */
+    aside{position:relative}
+    .sticky{position:sticky;top:32px}
+    .section{background:var(--card);padding:14px;border-radius:12px;margin-bottom:14px}
+    .section h4{margin:0 0 12px 0}
+    .category-list{display:flex;flex-wrap:wrap;gap:8px}
+    .chip{padding:8px 10px;border-radius:999px;background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);font-size:13px}
+
+    /* LATEST LIST */
+    .latest{display:flex;flex-direction:column;gap:10px}
+    .latest-item{display:flex;gap:10px;align-items:center}
+    .latest-item img{width:64px;height:48px;border-radius:8px;object-fit:cover}
+    .latest-item small{color:var(--muted)}
+
+    footer{margin-top:22px;color:var(--muted);font-size:13px}
+
+    /* Responsive */
+    @media (max-width:980px){main{grid-template-columns:1fr}aside{order:2}footer{order:3}}
+    @media (max-width:520px){.grid{grid-template-columns:1fr}.search input{width:120px}}
+
+    /* small utilities */
+    .muted{color:var(--muted)}
+    .kicker{font-size:12px;color:var(--accent);font-weight:700}
+    button.icon-btn{background:transparent;border:0;padding:8px;border-radius:8px;cursor:pointer}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="brand">
+        <div class="logo">P</div>
+        <div>
+          <h1>Pulse</h1>
+          <p class="muted">Trusted. Fast. Visual.</p>
+        </div>
+      </div>
+
+      <div class="top-controls">
+        <div class="search" role="search" aria-label="Search news">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35M11 19a8 8 0 100-16 8 8 0 000 16z"></path></svg>
+          <input placeholder="Search headlines..." />
+        </div>
+
+        <nav aria-label="Primary">
+          <button class="nav-btn">World</button>
+          <button class="nav-btn">Business</button>
+          <button class="nav-btn">Tech</button>
+          <button class="nav-btn">Culture</button>
+        </nav>
+
+        <button id="themeToggle" class="icon-btn" title="Toggle theme" aria-pressed="false">
+          <svg class="icon" viewBox="0 0 24 24" fill="none"><path stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M12 3v1M12 20v1M4.3 4.3l.7.7M18.9 18.9l.7.7M1 12h1M22 12h1M4.3 19.7l.7-.7M18.9 5.1l.7-.7M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        </button>
+      </div>
+    </header>
+
+    <main>
+      <section>
+        <article class="hero">
+          <div class="eyebrow">Top Story</div>
+          <h2>Major Breakthrough in Clean Energy Promises Cheaper Power for Cities</h2>
+          <p class="muted">A new modular reactor design and grid-scale batteries are poised to reshape how cities consume and store electricity. We spoke to researchers and utility operators about the timeline and challenges.</p>
+          <div class="hero-meta muted">By <strong>R. Patel</strong> · Oct 13, 2025 · 6 min read</div>
+
+          <div class="grid">
+            <div class="card">
+              <div class="thumb"><img src="https://images.unsplash.com/photo-1509395176047-4a66953fd231?q=80&w=1200&auto=format&fit=crop" alt="Solar panels" loading="lazy"></div>
+              <div>
+                <div class="kicker">Energy</div>
+                <h3>City pilots modular reactors to stabilize peak demand</h3>
+                <p class="muted">Pilot projects will test small modular reactors integrated with renewables to reduce blackouts and increase resilience.</p>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="thumb"><img src="https://images.unsplash.com/photo-1534126511673-b6899657816a?q=80&w=1200&auto=format&fit=crop" alt="Battery storage" loading="lazy"></div>
+              <div>
+                <div class="kicker">Tech</div>
+                <h3>Grid-scale batteries drop prices faster than predicted</h3>
+                <p class="muted">Falling costs and longer lifetimes make battery storage a practical partner for intermittent renewable energy sources.</p>
+              </div>
+            </div>
+
+          </div>
+        </article>
+
+        <section style="margin-top:18px">
+          <h3 style="margin:0 0 12px 0">Latest</h3>
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px">
+            <!-- Article cards (3-up) -->
+            <article class="card">
+              <div class="thumb"><img src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?q=80&w=1200&auto=format&fit=crop" alt="Market" loading="lazy"></div>
+              <div>
+                <div class="kicker">Markets</div>
+                <h3>Global markets rally after policy update</h3>
+                <p class="muted">Stocks in major indices saw gains as central bank signalled a pause.</p>
+              </div>
+            </article>
+
+            <article class="card">
+              <div class="thumb"><img src="https://images.unsplash.com/photo-1508385082359-f1f9be1a7e3b?q=80&w=1200&auto=format&fit=crop" alt="Startup" loading="lazy"></div>
+              <div>
+                <div class="kicker">Business</div>
+                <h3>Startup builds AI tools for local journalism</h3>
+                <p class="muted">New tools aim to help community outlets automate routine reporting while preserving editorial control.</p>
+              </div>
+            </article>
+
+            <article class="card">
+              <div class="thumb"><img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=1200&auto=format&fit=crop" alt="Culture" loading="lazy"></div>
+              <div>
+                <div class="kicker">Culture</div>
+                <h3>Festival returns with a focus on sustainability</h3>
+                <p class="muted">Organisers emphasise low-waste stages and local food producers this season.</p>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <footer class="muted">© 2025 Pulse — Built as a demo. Design: clean, responsive, accessible.</footer>
+      </section>
+
+      <aside>
+        <div class="sticky">
+          <div class="section">
+            <h4>Sections</h4>
+            <div class="category-list">
+              <div class="chip">Politics</div>
+              <div class="chip">Business</div>
+              <div class="chip">Tech</div>
+              <div class="chip">Science</div>
+              <div class="chip">Culture</div>
+              <div class="chip">Sports</div>
+            </div>
+          </div>
+
+          <div class="section">
+            <h4>Trending</h4>
+            <div class="latest">
+              <div class="latest-item">
+                <img src="https://images.unsplash.com/photo-1529400971008-f566de0e6dfc?q=80&w=1200&auto=format&fit=crop" alt="Trending 1" loading="lazy">
+                <div>
+                  <div><strong>5 things to know about the energy update</strong></div>
+                  <small class="muted">Oct 13 · 3 min</small>
+                </div>
+              </div>
+
+              <div class="latest-item">
+                <img src="https://images.unsplash.com/photo-1543269865-cbf427effbad?q=80&w=1200&auto=format&fit=crop" alt="Trending 2" loading="lazy">
+                <div>
+                  <div><strong>How cities are preparing for sea-level rise</strong></div>
+                  <small class="muted">Oct 12 · 5 min</small>
+                </div>
+              </div>
+
+              <div class="latest-item">
+                <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?q=80&w=1200&auto=format&fit=crop" alt="Trending 3" loading="lazy">
+                <div>
+                  <div><strong>Interview: The future of local newsrooms</strong></div>
+                  <small class="muted">Oct 11 · 8 min</small>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="section">
+            <h4>Newsletter</h4>
+            <p class="muted">Get the top 5 stories every morning — curated by editors.</p>
+            <form onsubmit="event.preventDefault();alert('Thanks — demo only')">
+              <input type="email" placeholder="you@example.com" required style="width:100%;padding:10px;border-radius:8px;border:0;margin-bottom:8px">
+              <button style="width:100%;padding:10px;border-radius:8px;border:0;background:linear-gradient(90deg,var(--accent),#ffb86b);color:#081024;font-weight:700;cursor:pointer">Subscribe</button>
+            </form>
+          </div>
+        </div>
+      </aside>
+    </main>
+  </div>
+
+  <script>
+    // Theme toggle (persists in localStorage)
+    const btn = document.getElementById('themeToggle');
+    const root = document.documentElement;
+    const stored = localStorage.getItem('pulse-theme');
+    if(stored === 'light'){ root.classList.add('light'); btn.setAttribute('aria-pressed','true') }
+    btn.addEventListener('click',()=>{
+      const isLight = root.classList.toggle('light');
+      btn.setAttribute('aria-pressed', String(isLight));
+      localStorage.setItem('pulse-theme', isLight ? 'light' : 'dark');
+    });
+
+    // Simple progressive enhancement: keyboard focus visibility
+    document.body.addEventListener('keydown', (e)=>{ if(e.key === 'Tab') document.documentElement.style.scrollBehavior = 'smooth' })
+  </script>
+</body>
+</html>
