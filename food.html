@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Rahul Mishra — Portfolio</title>
+  <meta name="description" content="Portfolio of Rahul Mishra">
+  <img src="" alt="">
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0}
+    html,body{height:100%}
+    body{
+      font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+      line-height:1.4;
+      color:#137b3d;
+      background: linear-gradient(180deg, #62c628 0%, #1c64b7 100%);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      padding:32px;
+    }
+
+    .container{max-width:1100px;margin:0 auto}
+    header{display:flex;align-items:center;justify-content:space-between;margin-bottom:28px}
+    .logo{font-weight:700;font-size:20px;letter-spacing:0.4px}
+    nav a{color:rgba(255,255,255,0.95);text-decoration:none;margin-left:18px;font-weight:600}
+    nav a:hover{opacity:0.9}
+
+    main{display:grid;grid-template-columns:1fr 360px;gap:28px;align-items:start}
+
+    .hero{background:rgba(0,0,0,0.08);padding:28px;border-radius:16px;backdrop-filter:blur(4px)}
+    .hero h1{font-size:34px;margin-bottom:8px}
+    .hero p.lead{opacity:0.95;margin-bottom:16px}
+    .ctas{display:flex;gap:12px;margin-top:12px}
+    .btn{display:inline-block;padding:10px 16px;border-radius:10px;font-weight:700;text-decoration:none}
+    .btn-primary{background:#fff;color:#b71c1c}
+    .btn-ghost{border:1px solid rgba(255,255,255,0.12);color:rgba(255,255,255,0.95);background:transparent}
+
+    .sidebar{padding:20px;border-radius:14px;background:rgba(0,0,0,0.06);text-align:center}
+    .photo{
+      width:120px;
+      height:120px;
+      border-radius:50%;
+      object-fit:cover;
+      border:3px solid rgba(255,255,255,0.3);
+      margin-bottom:12px;
+    }
+    .role{opacity:0.9;margin-bottom:14px}
+    .info-list{list-style:none;text-align:left}
+    .info-list li{margin-bottom:8px;font-weight:600}
+
+    .projects{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:18px}
+    .card{background:rgba(255,255,255,0.06);padding:14px;border-radius:12px}
+    .card h3{margin-bottom:8px}
+    .tech{font-size:13px;opacity:0.9}
+
+    footer{margin-top:26px;text-align:center;opacity:0.95}
+
+    @media (max-width:900px){
+      main{grid-template-columns:1fr}
+      .projects{grid-template-columns:1fr}
+      .sidebar{order:2}
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="logo">Rahul Mishra</div>
+      <nav>
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <h1>Hi — I'm Rahul Mishra.</h1>
+        <p class="lead">A passionate web developer &amp; designer building clean, accessible experiences on the web. I focus on front-end engineering, UI design and performance.</p>
+        <p>Based in India. I love JavaScript, accessible design and a good cup of chai.</p>
+
+        <div class="ctas">
+          <a class="btn btn-primary" href="#contact">Hire me</a>
+          <a class="btn btn-ghost" href="#projects">See projects</a>
+          photo-1607746882042-944635dfe10e?w
+        </div>
+
+        <div id="projects" class="projects">
+          <article class="card">
+            <h3>Project One — Portfolio Site</h3>
+            <p class="tech">HTML • CSS • Vanilla JS</p>
+            <p>Responsive portfolio template showcasing work, animations and a contact form.</p>
+          </article>
+
+          <article class="card">
+            <h3>Project Two — E‑commerce UI</h3>
+            <p class="tech">React • Tailwind CSS</p>
+            <p>Design-led product listing and checkout flow with accessibility improvements.</p>
+          </article>
+
+          <article class="card">
+            <h3>Project Three — Dashboard</h3>
+            <p class="tech">Vue • D3</p>
+            <p>Data-heavy admin dashboard with charts and export features.</p>
+          </article>
+
+          <article class="card">
+            <h3>Project Four — Blog</h3>
+            <p class="tech">Gatsby • Markdown</p>
+            <p>Fast, SEO-friendly blog with optimized images and reading progress.</p>
+          </article>
+        </div>
+      </section>
+
+      <aside class="sidebar">
+        <img class="photo" src="https://via.placeholder.com/120" alt="Rahul Mishra photo">
+        <div class="role">Front-end Developer &amp,backend developer; Designer</div>
+        <ul class="info-list">
+          <li><strong>Location:</strong> India</li>
+          <li><strong>Email:</strong> <a href="rm2778643@gmail.com" style="color:inherit;text-decoration:underline;opacity:0.95">rahul@example.com</a></li>
+          <li><strong>Phone:</strong> +91 7004398297</li>
+        </ul>
+
+        <div style="margin-top:14px;text-align:left">
+          <strong>Skills</strong>
+          <p style="margin-top:8px">HTML • CSS • JavaScript • React • Vue • Accessibility • <Performance class="backend"></Performance></p>
+        </div>
+
+        <div style="margin-top:14px;text-align:left">
+          <strong>Social</strong>
+          <p style="margin-top:8px">GitHub • LinkedIn • Twitter</p>
+        </div>
+      </aside>
+    </main>
+
+    <footer id="contact">
+      <p>Want to work together? <a class="btn btn-primary" href="rm2778643@gmail.com" style="text-decoration:none;display:inline-block;margin-left:8px">Email me</a></p>
+      <p style="margin-top:12px;font-size:13px;opacity:0.9">© Rahul Mishra — Built with ❤️</p>
+    </footer>
+  </div>
+</body>
+</html>
